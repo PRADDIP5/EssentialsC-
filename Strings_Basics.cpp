@@ -9,7 +9,7 @@ int main() {
     // Loop through the array and find cities that start with "New"
     cout << "Name of the cities that start with character 'N' are:" << endl;
     for(int i = 0; i < 4; i++) {
-        if(cities[i].substr(0, 1) == "N") {
+        if(cities[i].substr(0, 3) == "N") {
             cout << cities[i] << endl;
         }
     }
