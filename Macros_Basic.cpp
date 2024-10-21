@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-#define ABS(Num) ((Num)<(0)? (-Num) : (Num))
+#define ABS(num) ((num)<(0)? (-num) : (num))
 #define MAX(a,b) ((a)>(b)? (a) : (b))
 
 int main()
