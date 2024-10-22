@@ -1,10 +1,8 @@
-/*Concept - Parametric Polymoprphism
+/* Concept - Parametric Polymoprphism
 				DataType Parameterization
 				TypePaarameter - > variables -> DataType Placeholder
-
 C++ building Block - Template
 */
-
 
 #include <iostream>
 using namespace std;
@@ -58,9 +56,8 @@ void printArray(T arr[], int size) {
     cout << endl;
 }
 
-
 int main() {
-	// Array with interger datatypes elements
+    // Array with elements as integer datatype
     int arr[] = {64, 34, 25, 12, 22, 11, 90};
     int n = sizeof(arr) / sizeof(arr[0]);
 
@@ -71,7 +68,7 @@ int main() {
     cout << "Sorted array: \n";
     printArray(arr, n);
 
-   // Array with double datatype elements
+   // Array with elements as double data type
     double arr1[] = {64.5, 34.5, 25.6, 12.3, 22.3, 11.2, 90.1};
     int n1 = sizeof(arr1) / sizeof(arr1[0]);
 
