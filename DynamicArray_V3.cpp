@@ -1,16 +1,16 @@
 #include <iostream>
 
-template <typename arrDataGen>
+template <typename genDataTypeAsInput>
 
 class DynamicArray {
 private:
-    arrDataGen* data;        // Pointer to the array's first element
+    genDataTypeAsInput* data;        // Pointer to the array's first element
     int capacity;     // Total capacity of the array
     int size;         // Current number of elements
 
     // Function to resize the array when needed
     void resize(int new_capacity) {
-        arrDataGen* temp = new arrDataGen[new_capacity];  // Allocate new array with increased capacity
+        genDataTypeAsInput* temp = new genDataTypeAsInput[new_capacity];  // Allocate new array with increased capacity
         
         // Copy old data to the new array
         for (int i = 0; i < size; ++i) {
@@ -28,7 +28,7 @@ public:
     DynamicArray() {
         size = 0;
         capacity = 2;            // Start with a small capacity
-        data = new arrDataGen[capacity]; // Allocate initial memory
+        data = new genDataTypeAsInput[capacity]; // Allocate initial memory
     }
 
     // Destructor
@@ -37,7 +37,7 @@ public:
     }
 
     // Function to add elements
-    void add(arrDataGen value) {
+    void add(genDataTypeAsInput value) {
         if (size == capacity) {
             resize(capacity * 2);  // Double the capacity when full
         }
@@ -45,7 +45,7 @@ public:
     }
 
     // Function to get an element at a specific index
-    arrDataGen get(int index) const {
+    genDataTypeAsInput get(int index) const {
         if (index >= 0 && index < size) {
             return data[index];
         }
