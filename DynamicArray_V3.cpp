@@ -45,7 +45,7 @@ public:
     }
 
     // Function to get an element at a specific index
-    genDataTypeAsInput get(int index) const {
+    genDataTypeAsInput& operator[] (int index) const {
         if (index >= 0 && index < size) {
             return data[index];
         }
@@ -73,6 +73,7 @@ public:
 
 int main() {
     DynamicArray<int> arr;
+    DynamicArray<string> arr1;
 
     // Adding elements
     arr.add(10);
@@ -80,14 +81,30 @@ int main() {
     arr.add(30);
     arr.add(40);
 
+     // Adding elements
+    arr1.add("Satish");
+    arr1.add("Ravi");
+    arr1.add("Varun");
+    arr1.add("Kiran");
+
     // Getting elements
     for (int i = 0; i < arr.getSize(); i++) {
-        std::cout << "Element at index " << i << ": " << arr.get(i) << std::endl;
+        std::cout << "Element at index " << i << ": " << arr[i] << std::endl;
     }
+
+     // Getting elements
+    for (int i = 0; i < arr1.getSize(); i++) {
+        std::cout << "Element at index " << i << ": " << arr1[i] << std::endl;
+    }
+
 
     // Removing an element
     arr.remove();
     std::cout << "After removing an element, size: " << arr.getSize() << std::endl;
+
+     // Removing an element
+    arr1.remove();
+    std::cout << "After removing an element, size: " << arr1.getSize() << std::endl;
 
     return 0;
 }
