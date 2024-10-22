@@ -4,13 +4,10 @@
 using namespace std;
 
 class DynamicArray{
-
    private:
-		
 		int index=-1;
 		int items[5];
 		void rezise(){}
-		
   public : /* Default Interface */
 		void clear(){}
 		void add(int data){
@@ -25,8 +22,8 @@ class DynamicArray{
 		~DynamicArray(){
 		    cout << "Destructor called" << endl;
 		}
-		
 };
+
 void loadData(DynamicArray instance){
 		instance.add(10);
 		instance.add(20);
