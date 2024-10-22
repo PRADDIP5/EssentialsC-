@@ -1,4 +1,8 @@
-/Blueprint, User Defined DataType, Abstarct Entity without values,Classification of Reald world Entity
+//Blueprint, User Defined DataType, Abstarct Entity without values,Classification of Reald world Entity
+
+#include <iostream>
+using namespace std;
+
 class DynamicArray{
 
    private:
@@ -19,6 +23,7 @@ class DynamicArray{
 		void reverse(){}
 		void sort(){}
 		~DynamicArray(){
+		    cout << "Destructor called" << endl;
 		}
 		
 };
@@ -32,10 +37,10 @@ void instantiate(){
 	DynamicArray instance1;//instance
 	loadData(instance1);
 	cout<<instance1.getDataFromIndex(2)<<endl;
-
 }
+
 int main(){
 	int x=10;
-	instantiate()
+	instantiate();
 	return 0;
 }
