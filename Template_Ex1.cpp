@@ -7,7 +7,7 @@ C++ building Block - Template
 #include <iostream>
 using namespace std;
 
-template <typename T>
+template <typename inpIsInt>
 
 // void bubbleSort(int arr[], int n) {
 //     // Loop through all elements of the array
@@ -24,14 +24,14 @@ template <typename T>
 //     }
 // }
 
-void bubbleSort(T arr[], int n) {
+void bubbleSort(inpIsInt arr[], int n) {
     // Loop through all elements of the array
     for (int i = 0; i < n - 1; ++i) {
         // Last i elements are already in place, so no need to check them
         for (int j = 0; j < n - i - 1; ++j) {
             // Swap if the element found is greater than the next element
             if (arr[j] > arr[j + 1]) {
-                T temp = arr[j];
+                inpIsInt temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
             }
@@ -47,9 +47,9 @@ void bubbleSort(T arr[], int n) {
 //     cout << endl;
 // }
 
-template <typename T>
+template <typename inpIsDoble>
 
-void printArray(T arr[], int size) {
+void printArray(inpIsDoble arr[], int size) {
     for (int i = 0; i < size; ++i) {
         cout << arr[i] << " ";
     }
@@ -62,22 +62,22 @@ int main() {
     int n = sizeof(arr) / sizeof(arr[0]);
 
     cout << "Original array: \n";
-    printArray(arr, n);
-    bubbleSort(arr, n);
+    printArray<int>(arr, n);
+    bubbleSort<int>(arr, n);
 
     cout << "Sorted array: \n";
-    printArray(arr, n);
+    printArray<int>(arr, n);
 
    // Array with elements as double data type
     double arr1[] = {64.5, 34.5, 25.6, 12.3, 22.3, 11.2, 90.1};
     int n1 = sizeof(arr1) / sizeof(arr1[0]);
 
     cout << "Original double array: \n";
-    printArray(arr1, n1);
-    bubbleSort(arr1, n1);
+    printArray<double>(arr1, n1);
+    bubbleSort<double>(arr1, n1);
 
     cout << "Sorted double array: \n";
-    printArray(arr1, n1);
+    printArray<double>(arr1, n1);
 
     return 0;
 }
