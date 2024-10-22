@@ -1,14 +1,16 @@
 #include <iostream>
 
+template <typename arrDataGen>
+
 class DynamicArray {
 private:
-    int* data;        // Pointer to the array's first element
+    arrDataGen* data;        // Pointer to the array's first element
     int capacity;     // Total capacity of the array
     int size;         // Current number of elements
 
     // Function to resize the array when needed
     void resize(int new_capacity) {
-        int* temp = new int[new_capacity];  // Allocate new array with increased capacity
+        arrDataGen* temp = new arrDataGen[new_capacity];  // Allocate new array with increased capacity
         
         // Copy old data to the new array
         for (int i = 0; i < size; ++i) {
@@ -26,7 +28,7 @@ public:
     DynamicArray() {
         size = 0;
         capacity = 2;            // Start with a small capacity
-        data = new int[capacity]; // Allocate initial memory
+        data = new arrDataGen[capacity]; // Allocate initial memory
     }
 
     // Destructor
@@ -35,7 +37,7 @@ public:
     }
 
     // Function to add elements
-    void add(int value) {
+    void add(arrDataGen value) {
         if (size == capacity) {
             resize(capacity * 2);  // Double the capacity when full
         }
@@ -43,7 +45,7 @@ public:
     }
 
     // Function to get an element at a specific index
-    int get(int index) const {
+    arrDataGen get(int index) const {
         if (index >= 0 && index < size) {
             return data[index];
         }
@@ -70,7 +72,7 @@ public:
 };
 
 int main() {
-    DynamicArray arr;
+    DynamicArray<int> arr;
 
     // Adding elements
     arr.add(10);
