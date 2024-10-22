@@ -60,24 +60,23 @@ void printArray(T arr[], int size) {
 
 
 int main() {
+	// Array with interger datatypes elements
     int arr[] = {64, 34, 25, 12, 22, 11, 90};
     int n = sizeof(arr) / sizeof(arr[0]);
 
     cout << "Original array: \n";
     printArray(arr, n);
-
     bubbleSort(arr, n);
 
     cout << "Sorted array: \n";
     printArray(arr, n);
 
-   // Example with a different type
-    double arr1[] = {64.5, 34.2, 25.1, 12.0, 22.3, 11.9, 90.8};
+   // Array with double datatype elements
+    double arr1[] = {64.5, 34.5, 25.6, 12.3, 22.3, 11.2, 90.1};
     int n1 = sizeof(arr1) / sizeof(arr1[0]);
 
     cout << "Original double array: \n";
     printArray(arr1, n1);
-
     bubbleSort(arr1, n1);
 
     cout << "Sorted double array: \n";
