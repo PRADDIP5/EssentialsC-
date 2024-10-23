@@ -13,8 +13,6 @@ class baseClass_device{
 	}
 };//Device
 
-cout << "-------------------------------------------" << endl;
-
 class chClass_printer:public virtual baseClass_device{
 	public:
 		chClass_printer():baseClass_device(100){
@@ -25,8 +23,6 @@ class chClass_printer:public virtual baseClass_device{
 		}
 }; //Printer
 
-cout << "-------------------------------------------" << endl;
-
 class chClass_scanner:public virtual baseClass_device{
 	public:
 		chClass_scanner():baseClass_device(200){
@@ -36,8 +32,6 @@ class chClass_scanner:public virtual baseClass_device{
 				cout<<"chClass_scanner Destructed"<<endl;
 		}
 }; //Scanner
-
-cout << "-------------------------------------------" << endl;
 
 class inhClass_PS:public chClass_printer,public chClass_scanner{
 		public:
@@ -52,5 +46,5 @@ class inhClass_PS:public chClass_printer,public chClass_scanner{
 int main(){
     
  inhClass_PS psInstance;
- 
+ cout << "-------------------------------------------" << endl;
 }
