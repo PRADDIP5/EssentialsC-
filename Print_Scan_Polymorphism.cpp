@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-class Printer {
+class printer {
 private:
     std::string name;
     std::string location;
@@ -9,14 +9,14 @@ private:
     std::string type;
 public:
     // Default constructor
-    Printer() : name("Unknown"), location("Unknown"), model("Unknown"), type("Unknown") {}
+    printer() : name("Unknown"), location("Unknown"), model("Unknown"), type("Unknown") {}
 
     // Constructor with name and location
-    Printer(const std::string& name, const std::string& location)
+    printer(const std::string& name, const std::string& location)
         : name(name), location(location), model("Unknown"), type("Unknown") {}
 
     // Constructor with all parameters
-    Printer(const std::string& name, const std::string& location, const std::string& model, const std::string& type)
+    printer(const std::string& name, const std::string& location, const std::string& model, const std::string& type)
         : name(name), location(location), model(model), type(type) {}
 
     void display() const {
@@ -24,7 +24,7 @@ public:
     }
 };
 
-class Scanner {
+class scanner {
 private:
     std::string name;
     std::string location;
@@ -32,14 +32,14 @@ private:
 
 public:
     // Default constructor
-    Scanner() : name("Unknown"), location("Unknown"), model("Unknown") {}
+    scanner() : name("Unknown"), location("Unknown"), model("Unknown") {}
 
     // Constructor with name and location
-    Scanner(const std::string& name, const std::string& location)
+    scanner(const std::string& name, const std::string& location)
         : name(name), location(location), model("Unknown") {}
 
     // Constructor with all parameters
-    Scanner(const std::string& name, const std::string& location, const std::string& model)
+    scanner(const std::string& name, const std::string& location, const std::string& model)
         : name(name), location(location), model(model) {}
 
     void display() const {
@@ -48,21 +48,21 @@ public:
 };
 
 int main() {
-    Printer printer1;
-    Printer printer2("HP LaserJet", "Office", "M404dn", "Laser");
-    Printer printer3("Canon Pixma", "Home", "MG3620", "Inkjet");
+    printer p1;
+    printer p2("HP LaserJet", "Office", "M404dn", "Laser");
+    printer p3("Canon Pixma", "Home", "MG3620", "Inkjet");
 
-    Scanner scanner1;
-    Scanner scanner2("Epson Perfection", "Office");
-    Scanner scanner3("Canon CanoScan", "Home", "LiDE 300");
+    scanner s1;
+    scanner s2("Epson Perfection", "Office");
+    scanner s3("Canon CanoScan", "Home", "LiDE 300");
 
-    printer1.display();
-    printer2.display();
-    printer3.display();
+    p1.display();
+    p2.display();
+    p3.display();
 
-    scanner1.display();
-    scanner2.display();
-    scanner3.display();
+    s1.display();
+    s2.display();
+    s3.display();
 
     return 0;
 }
