@@ -1,51 +1,56 @@
-
 #include <iostream>
 using namespace std;
 
-class D{
+class baseClass_device{
     private:
         int _id;
-	public:
-		D(int id):_id{id}{
-				cout<<"D Constructed"<<endl;
-		}
-		~D(){
-				cout<<"D Destructed"<<endl;
-		}
+    public:
+	  baseClass_device(int id):_id{id}{
+		cout<<"baseClass_device Constructed"<<endl;
+	}
+	~baseClass_device(){
+		cout<<"baseClass_device Destructed"<<endl;
+	}
 };//Device
 
-class P:public virtual  D{
-	public:
+cout << "-------------------------------------------" << endl;
 
-		P():D(100){
-				cout<<"P Constructed"<<endl;
+class chClass_printer:public virtual baseClass_device{
+	public:
+		chClass_printer():baseClass_device(100){
+				cout<<"chClass_printer Constructed"<<endl;
 		}
-		~P(){
-				cout<<"P Destructed"<<endl;
+		~chClass_printer(){
+				cout<<"chClass_printer Destructed"<<endl;
 		}
 }; //Printer
-class S:public virtual D{
+
+cout << "-------------------------------------------" << endl;
+
+class chClass_scanner:public virtual baseClass_device{
 	public:
-		S():D(200){
-				cout<<"S Constructed"<<endl;
+		chClass_scanner():baseClass_device(200){
+				cout<<"chClass_scanner Constructed"<<endl;
 		}
-		~S(){
-				cout<<"S Destructed"<<endl;
+		~chClass_scanner(){
+				cout<<"chClass_scanner Destructed"<<endl;
 		}
 }; //Scanner
 
-class PS:public P,public S{
+cout << "-------------------------------------------" << endl;
+
+class inhClass_PS:public chClass_printer,public chClass_scanner{
 		public:
-		PS():D::D(1000){
-				cout<<"PS Constructed"<<endl;
+		inhClass_PS():baseClass_device::baseClass_device(1000){
+				cout<<"inhClass_PS Constructed"<<endl;
 		}
-		~PS(){
-				cout<<"PS Destructed"<<endl;
+		~inhClass_PS(){
+				cout<<"inhClass_PS Destructed"<<endl;
 		}
 }; //PrinterScanner
 
 int main(){
     
- PS psInstance;
+ inhClass_PS psInstance;
  
 }
