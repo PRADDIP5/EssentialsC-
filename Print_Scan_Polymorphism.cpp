@@ -3,40 +3,39 @@
 using namespace std;
 
 class printer {
-private:
-    string name,location,model,type;
-public:
-    // Default constructor
-    printer() : name("Unknown"), location("Unknown"), model("Unknown"), type("Unknown") {}
+    private:
+        string name,location,model,type;
+    public:
+        // Default constructor
+        printer() : name("Unknown"), location("Unknown"), model("Unknown"), type("Unknown") {}
 
-    // Constructor with name and location
-    printer(string name,string location): name(name), location(location), model("Unknown"), type("Unknown") {}
+        // Constructor with name and location
+        printer(string name,string location): name(name), location(location), model("Unknown"), type("Unknown") {}
 
-    // Constructor with name,location,model and type
-    printer(string name,string location,string model,string type): name(name), location(location), model(model), type(type) {}
+        // Constructor with name,location,model and type
+        printer(string name,string location,string model,string type): name(name), location(location), model(model), type(type) {}
 
-    void output() {
+        void output() {
         cout << "Printer Info: " << name << ", " << location << ", " << model << ", " << type << endl;
-    }
+        }
 };
 
-
 class scanner {
-private:
-    string name,location,model;
-public:
-    // Default constructor
-    scanner() : name("Unknown"), location("Unknown"), model("Unknown") {}
+    private:
+        string name,location,model;
+    public:
+        // Default constructor
+        scanner() : name("Unknown"), location("Unknown"), model("Unknown") {}
 
-    // Constructor with name and location
-    scanner(string name,string location): name(name), location(location), model("Unknown") {}
+        // Constructor with name and location
+        scanner(string name,string location): name(name), location(location), model("Unknown") {}
 
-    // Constructor with name,location and model
-    scanner(string name,string location,string model): name(name), location(location), model(model) {}
+        // Constructor with name,location and model
+        scanner(string name,string location,string model): name(name), location(location), model(model) {}
 
-    void output(){
-        cout << "Scanner Info: " << name << ", " << location << ", " << model << endl;
-    }
+        void output(){
+            cout << "Scanner Info: " << name << ", " << location << ", " << model << endl;
+        }
 };
 
 int main() {
