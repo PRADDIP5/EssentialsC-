@@ -13,12 +13,10 @@ public:
     printer() : name("Unknown"), location("Unknown"), model("Unknown"), type("Unknown") {}
 
     // Constructor with name and location
-    printer(const string& name, const string& location)
-        : name(name), location(location), model("Unknown"), type("Unknown") {}
+    printer(const string& name, const string& location): name(name), location(location), model("Unknown"), type("Unknown") {}
 
-    // Constructor with all parameters
-    printer(const string& name, const string& location, const string& model, const string& type)
-        : name(name), location(location), model(model), type(type) {}
+    // Constructor with name,location,model and type
+    printer(const string& name, const string& location, const string& model, const string& type): name(name), location(location), model(model), type(type) {}
 
     void display() const {
         cout << "Printer Info: " << name << ", " << location << ", " << model << ", " << type << endl;
@@ -30,18 +28,15 @@ private:
     string name;
     string location;
     string model;
-
 public:
     // Default constructor
     scanner() : name("Unknown"), location("Unknown"), model("Unknown") {}
 
     // Constructor with name and location
-    scanner(const string& name, const string& location)
-        : name(name), location(location), model("Unknown") {}
+    scanner(const string& name, const string& location): name(name), location(location), model("Unknown") {}
 
-    // Constructor with all parameters
-    scanner(const string& name, const string& location, const string& model)
-        : name(name), location(location), model(model) {}
+    // Constructor with name,location and model
+    scanner(const string& name, const string& location, const string& model): name(name), location(location), model(model) {}
 
     void display() const {
         cout << "Scanner Info: " << name << ", " << location << ", " << model << endl;
@@ -50,12 +45,12 @@ public:
 
 int main() {
     printer p1;
-    printer p2("HP LaserJet", "Office", "M404dn", "Laser");
-    printer p3("Canon Pixma", "Home", "MG3620", "Inkjet");
+    printer p2("HP", "Office", "Pr123", "Laser");
+    printer p3("Canon", "Home", "Pr234", "Inkjet");
 
     scanner s1;
-    scanner s2("Epson Perfection", "Office");
-    scanner s3("Canon CanoScan", "Home", "LiDE 300");
+    scanner s2("Epson", "Office");
+    scanner s3("Canon", "Home", "Sc123");
 
     p1.display();
     p2.display();
