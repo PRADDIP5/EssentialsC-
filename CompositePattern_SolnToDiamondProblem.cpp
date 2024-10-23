@@ -15,7 +15,6 @@ class D{
 };//Device
 class P:public   D{
 	public:
-
 		P():D(100){
 				cout<<"P Constructed"<<endl;
 		}
@@ -26,6 +25,7 @@ class P:public   D{
 		    cout<<"Print Method Invoked"<<endl;
 		}
 }; //Printer
+
 class S:public  D{
 	public:
 		S():D(200){
@@ -38,13 +38,13 @@ class S:public  D{
 		    	cout<<"Scan Method Invoked"<<endl;
 		}
 }; //Scanner
+
 class PS:public D{
         private :
         //Dependency
         P pInstance;
         S sInstance;
-    
-		public:
+	public:
 		PS():D::D(1000){
 				cout<<"PS Constructed"<<endl;
 		}
@@ -55,9 +55,9 @@ class PS:public D{
 		    //delegation
 		    pInstance.pm();
 		}
-	    void sm(){
+	        void sm(){
 	        sInstance.sm();
-	    }
+	        }
 }; //PrinterScanner
 
 int main(){
