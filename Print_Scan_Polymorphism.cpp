@@ -10,12 +10,12 @@ public:
     printer() : name("Unknown"), location("Unknown"), model("Unknown"), type("Unknown") {}
 
     // Constructor with name and location
-    printer(const string& name, const string& location): name(name), location(location), model("Unknown"), type("Unknown") {}
+    printer(string name,string location): name(name), location(location), model("Unknown"), type("Unknown") {}
 
     // Constructor with name,location,model and type
-    printer(const string& name, const string& location, const string& model, const string& type): name(name), location(location), model(model), type(type) {}
+    printer(string name,string location,string model,string type): name(name), location(location), model(model), type(type) {}
 
-    void display() const {
+    void output() {
         cout << "Printer Info: " << name << ", " << location << ", " << model << ", " << type << endl;
     }
 };
@@ -29,12 +29,12 @@ public:
     scanner() : name("Unknown"), location("Unknown"), model("Unknown") {}
 
     // Constructor with name and location
-    scanner(const string& name, const string& location): name(name), location(location), model("Unknown") {}
+    scanner(string name,string location): name(name), location(location), model("Unknown") {}
 
     // Constructor with name,location and model
-    scanner(const string& name, const string& location, const string& model): name(name), location(location), model(model) {}
+    scanner(string name,string location,string model): name(name), location(location), model(model) {}
 
-    void display() const {
+    void output(){
         cout << "Scanner Info: " << name << ", " << location << ", " << model << endl;
     }
 };
@@ -48,13 +48,13 @@ int main() {
     scanner s2("Epson", "Office");
     scanner s3("Canon", "Home", "Sc123");
 
-    p1.display();
-    p2.display();
-    p3.display();
+    p1.output();
+    p2.output();
+    p3.output();
     cout << "----------- " << endl;
-    s1.display();
-    s2.display();
-    s3.display();
+    s1.output();
+    s2.output();
+    s3.output();
 
     return 0;
 }
