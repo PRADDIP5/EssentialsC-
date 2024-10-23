@@ -1,49 +1,50 @@
 #include <iostream>
 #include <string>
+using namespace std;
 
 class printer {
 private:
-    std::string name;
-    std::string location;
-    std::string model;
-    std::string type;
+    string name;
+    string location;
+    string model;
+    string type;
 public:
     // Default constructor
     printer() : name("Unknown"), location("Unknown"), model("Unknown"), type("Unknown") {}
 
     // Constructor with name and location
-    printer(const std::string& name, const std::string& location)
+    printer(const string& name, const string& location)
         : name(name), location(location), model("Unknown"), type("Unknown") {}
 
     // Constructor with all parameters
-    printer(const std::string& name, const std::string& location, const std::string& model, const std::string& type)
+    printer(const string& name, const string& location, const string& model, const string& type)
         : name(name), location(location), model(model), type(type) {}
 
     void display() const {
-        std::cout << "Printer Info: " << name << ", " << location << ", " << model << ", " << type << std::endl;
+        cout << "Printer Info: " << name << ", " << location << ", " << model << ", " << type << endl;
     }
 };
 
 class scanner {
 private:
-    std::string name;
-    std::string location;
-    std::string model;
+    string name;
+    string location;
+    string model;
 
 public:
     // Default constructor
     scanner() : name("Unknown"), location("Unknown"), model("Unknown") {}
 
     // Constructor with name and location
-    scanner(const std::string& name, const std::string& location)
+    scanner(const string& name, const string& location)
         : name(name), location(location), model("Unknown") {}
 
     // Constructor with all parameters
-    scanner(const std::string& name, const std::string& location, const std::string& model)
+    scanner(const string& name, const string& location, const string& model)
         : name(name), location(location), model(model) {}
 
     void display() const {
-        std::cout << "Scanner Info: " << name << ", " << location << ", " << model << std::endl;
+        cout << "Scanner Info: " << name << ", " << location << ", " << model << endl;
     }
 };
 
