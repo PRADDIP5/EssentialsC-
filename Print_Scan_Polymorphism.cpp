@@ -4,10 +4,7 @@ using namespace std;
 
 class printer {
 private:
-    string name;
-    string location;
-    string model;
-    string type;
+    string name,location,model,type;
 public:
     // Default constructor
     printer() : name("Unknown"), location("Unknown"), model("Unknown"), type("Unknown") {}
@@ -23,11 +20,10 @@ public:
     }
 };
 
+
 class scanner {
 private:
-    string name;
-    string location;
-    string model;
+    string name,location,model;
 public:
     // Default constructor
     scanner() : name("Unknown"), location("Unknown"), model("Unknown") {}
@@ -55,7 +51,7 @@ int main() {
     p1.display();
     p2.display();
     p3.display();
-
+    cout << "----------- " << endl;
     s1.display();
     s2.display();
     s3.display();
