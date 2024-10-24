@@ -5,12 +5,8 @@ template<typename K, typename V>
 class Dictionary {
 private:
     static const int MAX_SIZE = 100; // Define maximum size for the dictionary
-    struct Entry {
-        K key; // Key
-        V value; // Value
-    };
-
-    Entry entries[MAX_SIZE]; // Array to store key-value pairs
+    K keys[MAX_SIZE]; // Array to store keys
+    V values[MAX_SIZE]; // Array to store values
     int size; // Current number of items
 
 public:
@@ -23,8 +19,8 @@ public:
             std::cout << "Error: Dictionary capacity exceeded." << std::endl;
             return false; // Indicate failure
         }
-        entries[size].key = key; // Store the key
-        entries[size].value = value; // Store the value
+        keys[size] = key; // Store the key
+        values[size] = value; // Store the value
         size++; // Increment the size
         return true; // Indicate success
     }
@@ -32,8 +28,8 @@ public:
     // Method to access value by key
     bool get(K key, V& value) {
         for (int i = 0; i < size; ++i) {
-            if (entries[i].key == key) {
-                value = entries[i].value; // Assign the corresponding value
+            if (keys[i] == key) {
+                value = values[i]; // Assign the corresponding value
                 return true; // Indicate success
             }
         }
@@ -44,7 +40,7 @@ public:
     void dump() const {
         std::cout << "Key : Value\n";
         for (int i = 0; i < size; ++i) {
-            std::cout << "   " << entries[i].key << " : " << entries[i].value << "\n";
+            std::cout << "   " << keys[i] << " : " << values[i] << "\n";
         }
     }
 };
@@ -58,14 +54,6 @@ int main() {
 
     // Dump all the items from deviceCodeMap
     deviceCodeMap.dump();
-    /*
-      Output:
-      Key : Value
-         1 : D1
-         2 : D2
-         3 : D3
-         4 : D4
-    */
 
     return 0;
 }
