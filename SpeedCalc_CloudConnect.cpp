@@ -128,13 +128,13 @@ void testSpeedMonitor(int speed, int statusCode) {
                 testPassed = false;
             }
         } else {
-            if (!mockLogger.prvMessage.empty()) {
+            if (mockLogger.prvMessage!= "") {
                 cout << "Test failed: Unexpected error message found: " << mockLogger.prvMessage << endl;
                 testPassed = false;
             }
         }
     } else {
-        if (!mockLogger.prvMessage.empty()) {
+        if (mockLogger.prvMessage!= "") {
             cout << "Test failed: Unexpected message found: " << mockLogger.prvMessage << endl;
             testPassed = false;
         }
@@ -166,7 +166,3 @@ int main(){
     testSpeedMonitor(30, 500); 
 
 }
-
-
-
-
