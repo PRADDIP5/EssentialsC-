@@ -66,15 +66,49 @@ SpeedMonitor(int speedThreshold, IntrFSpeedSensor* speedSensor, IntrFCommunicati
           }
 };
 
-int main(){
-BNFSpeedSensor speedSensor;
-IOTCloudCommunicator Communicator;
-SpeedMonitor instance {10, &speedSensor, &Communicator};
-  instance.monitor();
-  instance.monitor();
-  instance.monitor();
-  instance.monitor();
-  instance.monitor();
+class MockSpeedSensor : public IntrFSpeedSensor {
+public:
+    int speed; 
+    MockSpeedSensor(int spd) : speed(spd) {}
+
+    int getCurrentSpeed() {
+        return speed; // Return the predefined speed
+    }
+};
+
+lass MockCloudCommunicator : public IntrFCommunication {
+public:
+    int statusMsg; 
+
+    MockCloudCommunicator(int Msg) : statusMsg(Msg) {}
+
+    int pushMessage(string message) {
+        return statusMsg; 
+    }
+};
+
+void testSpeedMonitor(int speed, int statusMsg, bool expectError) {
+    MockSpeedSensor mockSensor(speed);
+    MockCloudCommunicator mockCommunicator(statusMsg);
+    SpeedMonitor monitor(10, &mockSensor, &mockCommunicator);
+}
+
+// int main(){
+// BNFSpeedSensor speedSensor;
+// IOTCloudCommunicator Communicator;
+// SpeedMonitor instance {10, &speedSensor, &Communicator};
+//   instance.monitor();
+//   instance.monitor();
+//   instance.monitor();
+//   instance.monitor();
+//   instance.monitor();
   
-  return 0;
+//   return 0;
+// }
+
+int main() {
+    
+    testSpeedMonitor(20, 200, false); 
+    
+    return 0;
 }
