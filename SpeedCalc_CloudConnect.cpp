@@ -127,13 +127,15 @@ void testSpeedMonitor(int speed, int statusCode) {
                 cout << "Test failed: Expected error message not found. Got: " << mockLogger.prvMessage << endl;
                 testPassed = false;
             }
-        } else {
+        } 
+        else {
             if (mockLogger.prvMessage!= "") {
                 cout << "Test failed: Unexpected error message found: " << mockLogger.prvMessage << endl;
                 testPassed = false;
             }
-        }
-    } else {
+       }
+    } 
+    else {
         if (mockLogger.prvMessage!= "") {
             cout << "Test failed: Unexpected message found: " << mockLogger.prvMessage << endl;
             testPassed = false;
