@@ -3,12 +3,12 @@
 #include <string>
 using namespace std;
 
-class IntrFCloudCommunication {
+class IntrFCommunication {
 public:
     virtual int pushMessage(string message) = 0;
 };
 
-class IOTCloudCommunicator: public IntrFCloudCommunication{
+class IOTCloudCommunicator: public IntrFCommunication{
     public:
           int  pushMessage(string message){
               //Interact with internet and push the message to MessageQueue
@@ -39,9 +39,9 @@ class BNFSpeedSensor: public IntrFSpeedSensor{
 class SpeedMonitor{
   private : int _speedThreshold;
   IntrFSpeedSensor* _speedSensor;
-  IntrFCloudCommunication* _cloudCommunicator;
+  IntrFCommunication* _Communicator;
       public:
-SpeedMonitor(int speedThreshold, IntrFSpeedSensor* speedSensor, IntrFCloudCommunication* cloudCommunicator): _speedThreshold{speedThreshold}, _speedSensor(speedSensor),  _cloudCommunicator(cloudCommunicator){}
+SpeedMonitor(int speedThreshold, IntrFSpeedSensor* speedSensor, IntrFCommunication* Communicator): _speedThreshold{speedThreshold}, _speedSensor(speedSensor),  _Communicator(Communicator){}
 
           void monitor(){
             if(_speedThreshold  < 1 || _speedThreshold > 100){
@@ -56,7 +56,7 @@ SpeedMonitor(int speedThreshold, IntrFSpeedSensor* speedSensor, IntrFCloudCommun
             if(currentSpeedInKmph > _speedThreshold){
                   double mph = currentSpeedInKmph * 0.621371;
                   string message="Current Speed in Miles "+ to_string(mph);
-                 int statusCode= _cloudCommunicator->pushMessage(message);
+                 int statusCode= _Communicator->pushMessage(message);
                   if(statusCode > 400){
                       //Log Message to Console
                        cout<<"Error In Communication Unable to Contact Server "<<message<< endl;
@@ -68,8 +68,8 @@ SpeedMonitor(int speedThreshold, IntrFSpeedSensor* speedSensor, IntrFCloudCommun
 
 int main(){
 BNFSpeedSensor speedSensor;
-IOTCloudCommunicator cloudCommunicator;
-SpeedMonitor instance {10, &speedSensor, &cloudCommunicator};
+IOTCloudCommunicator Communicator;
+SpeedMonitor instance {10, &speedSensor, &Communicator};
   instance.monitor();
   instance.monitor();
   instance.monitor();
