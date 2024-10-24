@@ -23,7 +23,7 @@ IICEngine* _engine;
 	public:
 	TataCar(IICEngine* engine): _engine{engine}{}
 	void start(){
-		_engine->crank();
+		_engine->crank();  // interaction or delegation
 	}	
 	void stop(){
 		_engine->halt();
