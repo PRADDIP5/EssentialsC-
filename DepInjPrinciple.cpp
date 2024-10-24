@@ -3,18 +3,17 @@ using namespace std;
 
 class IICEngine{
 	public:
-			//pure virtual method;
-			virtual void crank()=0;
-			virtual void halt()=0;
+		//pure virtual method;
+		virtual void crank()=0;
+		virtual void halt()=0;
 };
 
 //Low Level Module, Service
 //VericoreEngine implemets contract i.e IICEngine
 class VericoreEngine:public IICEngine{
 	public:
-		void crank(){	cout << "crank & Halt called" << endl;}
-		void halt(){ 	cout << "crank & Halt called" << endl;}
-	
+		void crank(){	cout << "egnied cranked" << endl;}
+		void halt(){ 	cout << "engine halted" << endl;}
 };
 
 //High Level Module , consumer,client
@@ -33,8 +32,10 @@ IICEngine* _engine;
 };
 
 int main(){
-       VericoreEngine _vericoreEng; 
-		TataCar _hexaInstance(&_vericoreEng);
-		_hexaInstance.start();
-		_hexaInstance.stop();
+        VericoreEngine _vericoreEng; 
+	TataCar _hexaInstance(&_vericoreEng);
+	_hexaInstance.start();
+	_hexaInstance.stop();
+
+	return 0;
 }
