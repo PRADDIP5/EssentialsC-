@@ -85,15 +85,88 @@ class SpeedMonitor{
           }
 };
 
+class MockSpeedSensor : public ISpeedSensor {
+public:
+    int speed; 
+    MockSpeedSensor(int spd) : speed(spd) {}
+    int getCurrentSpeed() {
+        return speed; 
+    }
+};
+
+class MockCloudCommunicator : public ICloudCommunicator {
+public:
+    int statusCode; 
+    MockCloudCommunicator(int code) : statusCode(code) {}
+    int pushMessage(string message) {
+        return statusCode;
+    }
+};
+
+class MockLogger : public IMessageLogger {
+public:
+    string prvMessage;
+    void write(const string& message) {
+        prvMessage = message; 
+    }
+};
+
+void testSpeedMonitor(int speed, int statusCode) {
+    MockSpeedSensor mockSensor(speed);
+    MockCloudCommunicator mockCommunicator(statusCode);
+    MockLogger mockLogger;
+
+    SpeedMonitor monitor(&mockSensor, &mockCommunicator, &mockLogger, 10); 
+    monitor.monitor(); 
+    bool testPassed = true;
+    
+    if (speed > 10) {
+        if (statusCode > 400) {
+            string expectedMessage = "Error In Communication Unable to Contact Server Current Speed in Miles " + to_string(speed * 0.621371);
+            if (mockLogger.prvMessage != expectedMessage) {
+                cout << "Test failed: Expected error message not found. Got: " << mockLogger.prvMessage << endl;
+                testPassed = false;
+            }
+        } else {
+            if (!mockLogger.prvMessage.empty()) {
+                cout << "Test failed: Unexpected error message found: " << mockLogger.prvMessage << endl;
+                testPassed = false;
+            }
+        }
+    } else {
+        if (!mockLogger.prvMessage.empty()) {
+            cout << "Test failed: Unexpected message found: " << mockLogger.prvMessage << endl;
+            testPassed = false;
+        }
+    }
+
+    if (testPassed) {
+        cout << "Test passed for speed: " << speed << ", status code: " << statusCode << endl;
+    }
+}
+// int main(){
+    
+//     BNFSpeedSensor speedSensor;
+//     IOTCloudCommunicator cloudCommunicator;
+//     TerminalLogger logger;
+//     SpeedMonitor instance(&speedSensor, &cloudCommunicator, &logger,150);
+//     instance.monitor();
+//     instance.monitor();
+//     instance.monitor();
+//     instance.monitor();
+//     instance.monitor();
+
+//     return 0;
+// }
+
 int main(){
     
-    BNFSpeedSensor speedSensor;
-    IOTCloudCommunicator cloudCommunicator;
-    TerminalLogger logger;
-    SpeedMonitor instance(&speedSensor, &cloudCommunicator, &logger,150);
-    instance.monitor();
-    instance.monitor();
-    instance.monitor();
-    instance.monitor();
-    instance.monitor();
+    testSpeedMonitor(20, 200); 
+    testSpeedMonitor(5, 200); 
+    testSpeedMonitor(30, 500); 
+
 }
+
+
+
+
