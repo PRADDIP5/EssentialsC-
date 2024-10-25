@@ -34,7 +34,7 @@ bool containsSubstring(string city,string searchSubstring) {
 }
 
 int main() {
-    // Vector of cities
+
     vector<string> cities = {"New York", "Los Angeles", "Chicago", "New Jersey"};
 
     string searchSubstring;
@@ -43,17 +43,16 @@ int main() {
 
     vector<string> matchedCities;
 
-    // Search for cities containing the specified substring
     for (string city : cities) {
         if (containsSubstring(city, searchSubstring)) {
             matchedCities.push_back(city);
         }
     }
 
-    // Output results
     if (matchedCities.empty()) {
-        cout << "No cities found matching the searched string." << endl;
-    } else {
+        cout << "No cities found matched with the searched string." << endl;
+    } 
+    else {
         cout << "Cities found with the searched string:" << endl;
         for (string cityName : matchedCities) {
             cout << cityName << endl;
