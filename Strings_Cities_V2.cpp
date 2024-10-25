@@ -31,7 +31,7 @@ int main() {
     vector<string> cities = {"New York", "Los Angeles", "Chicago", "New Jersey"};
 
     string searchString;
-    cout << "Enter a substring to search for cities: ";
+    cout << "Enter string to search for cities(New York,Los Angeles,Chicago,New Jersey) :" <<endl;
     cin >> searchString; 
 
     vector<string> matchedCities;
@@ -45,9 +45,10 @@ int main() {
 
     // Output results
     if (matchedCities.empty()) {
-        cout << "No cities found matching the search string." << endl;
-    } else {
-        cout << "Cities found:" << endl;
+        cout << "No cities found matching with searched string." << endl;
+    } 
+    else {
+        cout << "Cities found with searched string:" << endl;
         for (string cityName : matchedCities) {
             cout << cityName << endl;
         }
