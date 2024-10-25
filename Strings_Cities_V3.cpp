@@ -4,27 +4,27 @@
 
 using namespace std;
 
-class IPredicateStratergy{
-
-    public:
-	virtual ~IPredicateStratergy(){}
-	virtual bool predicate(const string& item)=0;
+class IPredicateStrategy {
+public:
+    virtual ~IPredicateStrategy() {}
+    virtual bool predicate(const string& item) const = 0;
 };
 
-class StartsWithStratergy:public IPredicateStratergy {
-    char firstAlp;
-public:
-    setFirstAlp(char alp){
-		this->firstAlp=alp;
-	}
+class StartsWithStrategy : public IPredicateStrategy {
+private:
+    char startingCharacter;
 
-    bool predicate(const string& item) const {
-        return !item.empty() && item[0] == firstAlp;
+public:
+    void setStartingCharacter(char character) {
+        this->startingCharacter = character;
+    }
+
+    bool predicate(const string& item) const override {
+        return !item.empty() && item[0] == startingCharacter;
     }
 };
 
-
-vector<string> filter(const vector<string>& source, const IPredicateStratergy& strategy) {
+vector<string> filter(const vector<string>& source, const IPredicateStrategy& strategy) {
     vector<string> filteredStrings;
     for (const string& item : source) {
         if (strategy.predicate(item)) {
@@ -34,23 +34,31 @@ vector<string> filter(const vector<string>& source, const IPredicateStratergy& s
     return filteredStrings;
 }
 
+void printFilteredCities(const vector<string>& cities, const IPredicateStrategy& strategy, char prefix) {
+    vector<string> filteredCities = filter(cities, strategy);
+    cout << "Cities that start with '" << prefix << "':" << endl;
+    if (filteredCities.empty()) {
+        cout << "No cities found." << endl;
+    } else {
+        for (const string& city : filteredCities) {
+            cout << city << endl;
+        }
+    }
+    cout << endl; // Add space for better readability
+}
+
 int main() {
     vector<string> cities = {"New York", "Los Angeles", "Chicago", "New Jersey"};
-	StartsWithStratergy strategy;
-	strategy.setFirstAlp('L');
+    StartsWithStrategy strategy;
+
+    strategy.setStartingCharacter('L');
+    printFilteredCities(cities, strategy, 'L');
+
+    strategy.setStartingCharacter('N');
+    printFilteredCities(cities, strategy, 'N');
     
-   vector<string> filteredCitiesByStart = filter(cities, strategy);
+     strategy.setStartingCharacter('C');
+    printFilteredCities(cities, strategy, 'C');
 
-    cout << "Cities that start with '" << firstAlp << "':" << endl;
-    for (const string& city : filteredCitiesByStart) {
-        cout << city << endl;
-    }
-	strategy.setFirstAlp('N');
-	filteredCitiesByStart = filter(cities, strategy);
-
-    cout << "Cities that start with '" << firstAlp << "':" << endl;
-    for (const string& city : filteredCitiesByStart) {
-        cout << city << endl;
-    }
     return 0;
 }
