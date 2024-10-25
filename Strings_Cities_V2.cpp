@@ -5,7 +5,7 @@
 using namespace std;
 
 // Function to check if the city contains the search substring
-bool containsSubstring(const string& city, const string& searchString) {
+bool containsSubstring(string city, string searchString) {
     size_t cityLength = city.length();
     size_t searchLength = searchString.length();
 
@@ -37,7 +37,7 @@ int main() {
     vector<string> matchedCities;
 
     // Search for cities containing the specified substring
-    for (const string& city : cities) {
+    for (string city : cities) {
         if (containsSubstring(city, searchString)) {
             matchedCities.push_back(city); 
         }
@@ -48,7 +48,7 @@ int main() {
         cout << "No cities found matching the search string." << endl;
     } else {
         cout << "Cities found:" << endl;
-        for (const string& cityName : matchedCities) {
+        for (string cityName : matchedCities) {
             cout << cityName << endl;
         }
     }
