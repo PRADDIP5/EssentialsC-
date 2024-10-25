@@ -1,17 +1,21 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+// Function to check if the city contains the search substring
 bool containsSubstring(string city,string searchSubstring) {
     // Loop through the city string
     for (int i = 0; ; ++i) {
-        // If we've reached the end of the city string, break
         if (city[i] == '\0') {
             break;
         }
 
-        // Assume a match initially
         bool match = true;
         for (int j = 0; ; ++j) {
-            // If we've reached the end of the search substring
             if (searchSubstring[j] == '\0') {
-                return true; // Found a match
+                return true; 
             }
 
             // If city character or search substring character is null, no match
@@ -26,7 +30,7 @@ bool containsSubstring(string city,string searchSubstring) {
             continue;
         }
     }
-    return false; // No match found
+    return false; 
 }
 
 int main() {
