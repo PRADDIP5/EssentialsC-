@@ -1,35 +1,55 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
 using namespace std;
 
-bool SearchingCity(string city, string SearchcityName) {
-    return city.find(SearchcityName) != string::npos; 
+// Function to check if the city contains the search substring
+bool containsSubstring(const string& city, const string& searchString) {
+    size_t cityLength = city.length();
+    size_t searchLength = searchString.length();
+
+    // Loop through the city string
+    for (size_t i = 0; i <= cityLength - searchLength; ++i) {
+        // Check for a match
+        bool match = true;
+        for (size_t j = 0; j < searchLength; ++j) {
+            if (city[i + j] != searchString[j]) {
+                match = false;
+                break;
+            }
+        }
+        if (match) {
+            return true; // Found a match
+        }
+    }
+    return false; // No match found
 }
 
 int main() {
-	
+    // Vector of cities
     vector<string> cities = {"New York", "Los Angeles", "Chicago", "New Jersey"};
 
-    string SearchcityName;
+    string searchString;
     cout << "Enter a substring to search for cities: ";
-    cin >> SearchcityName; 
+    cin >> searchString; 
 
-    vector<string> searchedCityNames;
+    vector<string> matchedCities;
 
-    for (string city : cities) {
-        if (SearchingCity(city, SearchcityName)) {
-            searchedCityNames.push_back(city); 
+    // Search for cities containing the specified substring
+    for (const string& city : cities) {
+        if (containsSubstring(city, searchString)) {
+            matchedCities.push_back(city); 
         }
     }
 
-    if (searchedCityNames.empty()) {
-        cout << "No cities found matching the cityName." << endl;
-    } 
-    else {
-        cout << "Cities found:" << std::endl;
-        for (string SearchcityName : searchedCityNames) {
-            cout << SearchcityName << endl;
+    // Output results
+    if (matchedCities.empty()) {
+        cout << "No cities found matching the search string." << endl;
+    } else {
+        cout << "Cities found:" << endl;
+        for (const string& cityName : matchedCities) {
+            cout << cityName << endl;
         }
     }
 
